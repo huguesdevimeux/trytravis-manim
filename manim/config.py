@@ -122,7 +122,7 @@ def _parse_file_writer_config(config_parser, args):
                  'tex_dir': 'Tex',
                  'text_dir': 'texts'}
     for name in dir_names:
-        config[name] = os.path.join(config['media_dir'], dir_names[name])
+        file_writer_config[name] = os.path.join(config['media_dir'], dir_names[name])
 
     # Handle the -s (--save_last_frame) flag: invalidate the -w flag
     # At this point the save_last_frame option has already been set by
@@ -365,7 +365,7 @@ def _parse_cli(arg_list, input=True):
 def _init_dirs(config):
     # Make sure all folders exist
     for folder in [config["media_dir"], config["video_dir"],
-                   config["tex_dir"], config["text_dir"]]:
+                   file_writer_config["tex_dir"], file_writer_config["text_dir"]]:
         if not os.path.exists(folder):
             os.makedirs(folder)
 
